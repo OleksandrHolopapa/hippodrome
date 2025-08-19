@@ -1,3 +1,6 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -7,15 +10,19 @@ import static java.util.Objects.isNull;
 public class Hippodrome {
 
     private final List<Horse> horses;
+    private final static Logger LOGGER = LoggerFactory.getLogger("Hippodrome");
 
     public Hippodrome(List<Horse> horses) {
         if (isNull(horses)) {
+            LOGGER.error("Horses list is null");
             throw new IllegalArgumentException("Horses cannot be null.");
         } else if (horses.isEmpty()) {
+            LOGGER.error("Horses list is empty");
             throw new IllegalArgumentException("Horses cannot be empty.");
         }
 
         this.horses = horses;
+        LOGGER.debug("створення Hippodrome, коней {}", horses.size());
     }
 
     public List<Horse> getHorses() {
