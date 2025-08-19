@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +44,29 @@ class HippodromeTest {
         assertEquals(horse2, hippodrome.getWinner());
     }
 
+    @Test
+    //This test does not run in Java version 24
+    void shouldCallMoveFiftyTimes() {
+        List<Horse> horses = generateMockHorsesList();
+        hippodrome = new Hippodrome(horses);
+        hippodrome.move();
+        for (Horse hors : horses) {
+            Mockito.verify(hors).move();
+        }
+    }
+
     private static List<Horse> generateListOfHorses() {
         List<Horse> horses = new ArrayList<>();
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 30; i++) {
             horses.add(new Horse("horse_" + i, 20 + i / 10.0));
+        }
+        return horses;
+    }
+
+    private static List<Horse> generateMockHorsesList() {
+        List<Horse> horses = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            horses.add(Mockito.mock(Horse.class));
         }
         return horses;
     }
