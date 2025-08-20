@@ -28,7 +28,7 @@ class HippodromeTest {
     }
 
     @Test
-    void shouldReturnHorsesList() {
+    void shouldReturnCorrectHorsesList() {
         List<Horse> horses = generateListOfHorses();
         hippodrome = new Hippodrome(horses);
         assertEquals(horses, hippodrome.getHorses());

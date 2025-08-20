@@ -32,25 +32,25 @@ class HorseTest {
     }
 
     @Test
-    void shouldReturnHorseNameValue() {
+    void shouldReturnCorrectHorseNameValue() {
         horse = new Horse("name", 20);
         assertEquals("name", horse.getName());
     }
 
     @Test
-    void shouldReturnHorseSpeedValue() {
+    void shouldReturnCorrectHorseSpeedValue() {
         horse = new Horse("name", 20);
         assertEquals(20, horse.getSpeed());
     }
 
     @Test
-    void shouldReturnDistanceValueIfConstructorHasThreeParameters() {
+    void shouldReturnCorrectDistanceValueIfConstructorHasThreeParameters() {
         horse = new Horse("name", 20, 40);
         assertEquals(40, horse.getDistance());
     }
 
     @Test
-    void shouldReturnDistanceValueIfConstructorHasTwoParameters() {
+    void shouldReturnCorrectDistanceValueIfConstructorHasTwoParameters() {
         horse = new Horse("name", 20);
         assertEquals(0, horse.getDistance());
     }
