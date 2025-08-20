@@ -8,7 +8,7 @@ class MainTest {
     @Test
     @Timeout(value = 22, unit=TimeUnit.SECONDS)
     @Disabled
-    void shouldBeCompletedInLessThan22Seconds() throws Exception {
+    void shouldMethodMainBeCompletedInLessThan22Seconds() throws Exception {
         Main.main(new String[] {});
     }
 }

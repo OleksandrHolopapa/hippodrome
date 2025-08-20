@@ -32,31 +32,31 @@ class HorseTest {
     }
 
     @Test
-    void shouldReturnHorseName() {
+    void shouldReturnHorseNameValue() {
         horse = new Horse("name", 20);
         assertEquals("name", horse.getName());
     }
 
     @Test
-    void shouldReturnHorseSpeed() {
+    void shouldReturnHorseSpeedValue() {
         horse = new Horse("name", 20);
         assertEquals(20, horse.getSpeed());
     }
 
     @Test
-    void shouldReturnDistanceIfConstructorHasThreeParameters() {
+    void shouldReturnDistanceValueIfConstructorHasThreeParameters() {
         horse = new Horse("name", 20, 40);
         assertEquals(40, horse.getDistance());
     }
 
     @Test
-    void shouldReturnDistanceIfConstructorHasTwoParameters() {
+    void shouldReturnDistanceValueIfConstructorHasTwoParameters() {
         horse = new Horse("name", 20);
         assertEquals(0, horse.getDistance());
     }
 
     @Test
-    void shouldCallGetRandomDoubleWhenMoveExecuting() {
+    void shouldCallMethodGetRandomDoubleWhenMethodMoveIsExecuting() {
         try (MockedStatic<Horse> horseMockedStatic = mockStatic(Horse.class)) {
             horse = new Horse("name", 20, 40);
             horse.move();
@@ -66,7 +66,7 @@ class HorseTest {
 
     @ParameterizedTest
     @ValueSource(doubles = {0.2, 0.5, 0.7, 0.8})
-    void shouldMoveReturnCorrectValueWhenResultOfGetRandomDoubleIsKnown(double getRandomDoubleResult) {
+    void shouldMethodMoveReturnCorrectValueWhenResultOfMethodGetRandomDoubleIsKnown(double getRandomDoubleResult) {
         horse = new Horse("name", 2.5);
         double expectedValue = horse.getDistance() + horse.getSpeed() * getRandomDoubleResult;
         try (MockedStatic<Horse> horseMockedStatic = mockStatic(Horse.class)) {

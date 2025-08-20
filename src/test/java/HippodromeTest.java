@@ -31,8 +31,7 @@ class HippodromeTest {
     void shouldReturnHorsesList() {
         List<Horse> horses = generateListOfHorses();
         hippodrome = new Hippodrome(horses);
-        List<Horse> horses2 = new ArrayList<>(horses);
-        assertEquals(horses2, hippodrome.getHorses());
+        assertEquals(horses, hippodrome.getHorses());
     }
 
     @Test
@@ -46,7 +45,7 @@ class HippodromeTest {
 
     @Test
     //This test does not run in Java version 24
-    void shouldCallMoveFiftyTimes() {
+    void shouldCallMethodMoveOnEachHorse() {
         List<Horse> horses = generateMockHorsesList();
         hippodrome = new Hippodrome(horses);
         hippodrome.move();
