@@ -1,17 +1,17 @@
 <configuration>
-
+    <property name="LOG_DIR" value="logs"/>
+    <property name="LOG_ARCHIVE" value="${LOG_DIR}/archive"/>
+    
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/hippodrome.log</file>
-        <RollingPolicy  class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                logs/hippodrome-%d{yyyy-MM-dd}.log.zip
-            </fileNamePattern>
-            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-            <DefaultRolloverStrategy max="10"/>
-        </RollingPolicy>
+        <file>${LOG_DIR}/hippodrome.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36}: %msg%n</pattern>
         </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_ARCHIVE}/hippodrome.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
     </appender>
 
     <root level="debug">
